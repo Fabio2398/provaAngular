@@ -1,0 +1,10 @@
+<!--<h1 [hidden]="!isVisible">{{ title }}</h1>
+<button (click)="changeVisibility()">Mostra/Nascondi</button>  <tra apici richiamo la funzione che si trova sul file component;
+                                                                in questo caso quando clicco rendo visibile o meno il TITLE>
+                                                            -->
+<h1>{{ title }}</h1>
+<br>
+
+<!--passo i dati che stanno in people(nel file customer.components.ts) a customers(che si trova nel file customers-list.components.ts) 
+USO QUINDI LA SET CUSTOMERS-->
+<app-customers-list [customers]="people"></app-customers-list>   

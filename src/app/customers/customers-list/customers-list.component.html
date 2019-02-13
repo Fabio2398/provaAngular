@@ -1,0 +1,38 @@
+<filter-textbox (changed)="filter($event)"></filter-textbox>
+<br />
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th (click)="sort('name')">Name</th>    <!--per rendere cliccabili e funzionali le mie colonne, in questo caso una sort sui dati-->
+            <th (click)="sort('city')">City</th>
+            <th (click)="sort('orderTotal')">Order Total</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let cust of filteredCustomers">  <!--(ciclo foreach)per ogni elemento di FilteredCustomers, 
+                                                    uso la variabile cust per fare qualcosa-->
+        <td>
+            <a [routerLink]="['/orders', cust.id]">
+                {{cust.name | capitalize}}   <!--per ogni elemento mi stampi il nome-->
+            </a>
+        </td>
+        <td>{{cust.city}}</td>
+        <td>{{cust.orderTotal | currency:currencyCode:'symbol'}}</td>      <!--con currency posso inserire una valuta, in questo caso prendo dalla classe CustomersListComponent, 
+                                                                            che si trova nel file customers-list.component.ts, il currencyCode che è impostato su EUR(Europa), 
+                                                                            e con 'symbol' gli dico di impostare il simbolo della moneta europea(€)-->
+    </tr>
+    <tr *ngIf="filteredCustomers && filteredCustomers.length">    <!--se entrambi esistono e l'array è pieno di elementi, 
+                                                                   stampa il totale degli ordini-->
+        
+        <td colspan="2">&nbsp;</td>
+        <td> Total:
+            {{customersOrderTotal | currency:currencyCode:'symbol'}}
+        </td>
+    </tr>
+    <tr *ngIf="!filteredCustomers || !filteredCustomers.length">   <!--se non esistono customers, o l'array è vuoto e non ha una lunghezza, 
+                                                                    allora stampa non trovato -->
+        <td colspan="4">No customers found</td>
+    </tr>
+</table>
+Number of Customers: {{filteredCustomers.length}}
+<br />
