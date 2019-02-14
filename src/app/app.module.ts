@@ -13,7 +13,7 @@ import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [ BrowserModule, AppRoutingModule, CustomersModule, OrdersModule, SharedModule, HttpClientModule, CoreModule],
+  imports: [ BrowserModule, CustomersModule, OrdersModule, AppRoutingModule,  SharedModule, HttpClientModule, CoreModule],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }
